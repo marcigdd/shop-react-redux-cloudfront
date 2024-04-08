@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build  --outDir infra/resources/build",
+    "build": "tsc && vite build",
     "preview": "npm run build && vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",

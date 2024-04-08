@@ -1,6 +1,6 @@
 # React-shop-cloudfront urls
-- [cloudfront-url](d3rd7daoacslzm.cloudfront.net) should show the static frontend application
-- [s3-url](https://deploywebappstackdeployment-frontendbucketefe2e19c-mmlsmokwtxfm.s3.us-east-1.amazonaws.com) should return 403
+- [cloudfront-url](https://dhdv7a2lleuvs.cloudfront.net) should show the static frontend application
+- [s3-url](https://deploywebappstackdeployment-frontendbucketefe2e19c-43pypqbonkab.s3.us-east-2.amazonaws.com/) should return 403
 - npm run deploy:infra can update the application in s3
 
 

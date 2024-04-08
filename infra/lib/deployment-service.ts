@@ -18,8 +18,8 @@ export class DeploymentService extends Stack {
     const buildPath = "./resources/build";
 
     const hostingBucket = new s3.Bucket(this, "FrontendBucket", {
-        blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-        removalPolicy: RemovalPolicy.DESTROY
+      blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+      removalPolicy: RemovalPolicy.DESTROY
     });
 
     const distribution = new cloudFront.Distribution(
