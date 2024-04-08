@@ -1,3 +1,8 @@
+# React-shop-cloudfront urls
+- [cloudfront-url](d3rd7daoacslzm.cloudfront.net) should show the static frontend application
+- [s3-url](https://deploywebappstackdeployment-frontendbucketefe2e19c-mmlsmokwtxfm.s3.us-east-1.amazonaws.com) should return 403
+
+
 # React-shop-cloudfront
 
 This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
