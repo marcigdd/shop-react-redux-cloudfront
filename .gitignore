@@ -11,7 +11,6 @@ node_modules
 .serverless
 coverage
 dist
-infra/resources
 dist-ssr
 *.local
 
@@ -25,3 +24,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# cdk directories
+infra/node_modules
+infra/cdk.out
+infra/resources
