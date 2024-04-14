@@ -1,8 +1,6 @@
 import { Construct } from "constructs";
 import {
   aws_s3 as s3,
-  Stack,
-  StackProps,
   aws_cloudfront as cloudFront,
   aws_s3_deployment as s3Deployment,
   CfnOutput,
@@ -11,15 +9,15 @@ import {
 import { BlockPublicAccess } from "aws-cdk-lib/aws-s3";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
 
-export class DeploymentService extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+export class DeploymentConstruct extends Construct {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
 
     const buildPath = "./resources/build";
 
     const hostingBucket = new s3.Bucket(this, "FrontendBucket", {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-      removalPolicy: RemovalPolicy.DESTROY
+      removalPolicy: RemovalPolicy.DESTROY,
     });
 
     const distribution = new cloudFront.Distribution(

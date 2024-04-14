@@ -27,7 +27,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "infra"
   ],
   "references": [
     {

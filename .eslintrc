@@ -1,5 +1,4 @@
 {
-  "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -20,5 +19,8 @@
     "react": {
       "version": "detect"
     }
+  },
+  "rules": {
+    "linebreak-style": 0
   }
 }
