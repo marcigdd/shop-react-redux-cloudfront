@@ -24,7 +24,11 @@
       "./node_modules/@types"
     ]
   },
+  "include": [
+    "**/*.ts"
+  ],
   "exclude": [
+    "resources",
     "node_modules",
     "cdk.out"
   ]

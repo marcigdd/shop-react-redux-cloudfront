@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "lint": "eslint --ignore-path .gitignore --fix src",
     "prettier": "prettier src --write",
-    "deploy:infra": "npm run build && npm run upload -w infra"
+    "deploy:infra": "npm run build && npm run deploy -w infra"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
