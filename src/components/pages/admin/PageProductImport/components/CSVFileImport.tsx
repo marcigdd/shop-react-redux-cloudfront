@@ -25,9 +25,12 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
 
   const uploadFile = async () => {
     console.log("uploadFile to", url);
+
     if (!file) {
-      return;
+      throw new Error("The given file is not found");
     }
+
+    // Get the presigned URL
     const response = await axios({
       method: "GET",
       url,
@@ -35,15 +38,26 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
         fileName: encodeURIComponent(file.name),
       },
     });
-    console.log("File to upload: ", file.name);
-    console.log("Uploading to: ", response.data.uploadURL);
+    console.log("File to upload: ", file ? file.name : "No file");
+    console.log("Uploading to: ", response.data);
     const result = await fetch(response.data.uploadURL, {
       method: "PUT",
+      headers: {
+        "Content-Type": "text/csv",
+      },
       body: file,
     });
+    console.log("file", file);
+
+    if (!result.ok) {
+      throw new Error(`HTTP error! status: ${result.status}`);
+    }
+
     console.log("Result: ", result);
+    console.log(result.body);
     setFile(undefined);
   };
+
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
