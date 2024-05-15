@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import axios from "axios";
@@ -10,6 +10,22 @@ type CSVFileImportProps = {
 
 export default function CSVFileImport({ url, title }: CSVFileImportProps) {
   const [file, setFile] = React.useState<File>();
+
+  useEffect(() => {
+    // Set the localStorage item on the client-side
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        "authorization_token",
+        generateAuthorizationToken("marcigdd", "test")
+      );
+    }
+  }, []);
+
+  function generateAuthorizationToken(username: string, password: string) {
+    const token = `${username}:${password}`;
+    const encodedToken = btoa(token);
+    return encodedToken;
+  }
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -29,6 +45,10 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
     if (!file) {
       throw new Error("The given file is not found");
     }
+    console.log(
+      "Authorization token: ",
+      localStorage.getItem("authorization_token")
+    );
 
     // Get the presigned URL
     const response = await axios({
@@ -37,9 +57,13 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
       params: {
         fileName: encodeURIComponent(file.name),
       },
+      headers: {
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
+      },
     });
     console.log("File to upload: ", file ? file.name : "No file");
     console.log("Uploading to: ", response.data);
+
     const result = await fetch(response.data.uploadURL, {
       method: "PUT",
       headers: {

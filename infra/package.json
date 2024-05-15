@@ -8,7 +8,7 @@
     "build:cdk": "cdk synth",
     "update": "aws s3 sync ./resources/build s3://deploywebappstackdeployment-frontendbucketefe2e19c-mmlsmokwtxfm",
     "upload": "npm run update && npm run invalidate-cache",
-    "invalidate-cache": "aws cloudfront create-invalidation --distribution-id EEPX56WEDBWDT --paths \"/*\"",
+    "invalidate-cache": "aws cloudfront create-invalidation --distribution-id E3GETF79IHYELU --paths \"/*\"",
     "deploy": "cdk deploy && npm run invalidate-cache",
     "destroy": "cdk destroy"
   },
